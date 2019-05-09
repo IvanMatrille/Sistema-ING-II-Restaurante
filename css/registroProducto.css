@@ -1,0 +1,18 @@
+body{
+    margin: 10;
+}
+
+.bloquePrecioItbis{
+    font-size: 20px;
+    display: inline-block;
+}
+
+.bloquePrecioItbis p{
+    color: red;
+    font-style: bold;
+}
+
+tr:hover {
+    background-color: #ffff99;
+    cursor:pointer;
+}

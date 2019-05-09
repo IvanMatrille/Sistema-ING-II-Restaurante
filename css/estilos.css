@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+div#container{
+    border: 2px solid gray;
+    margin-top:50px;
+    width:75%;
+    height:600px;
+    background-color: rgb(210, 210, 247)
+
+  }
+
+  #Scroll{
+    overflow-y: scroll;
+    height:500px;
+    width:95%;
+    left:2%;
+  }
+  
+  /* representa un grupo de ayudas introductorias o de navegación. Puede contener algunos elementos de encabezado */
+  header {
+      background-color: black;
+      padding: 1px;
+      text-align: center;
+      font-size: 15px;
+      color: white;
+  }
+  
+  /* representa un pie de página para el contenido de sección más cercano o el elemento raíz de sección */
+  footer {
+      background-color: black;
+      padding: 10px;
+      text-align: center;
+      color: white;
+      margin-top:90px;
+      height:100px;
+      position: relative;
+      
+  }
+
+  h1#primero{
+    text-align: center;
+  }
+
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid gray;
+  }
+  table thead{
+    background-color: rgb(64, 46, 112);
+    color: white;
+  }
+  table tbody tr:nth-child(odd) {
+    background-color: #d4d1d1;
+    
+  }
+  td, th{
+    height: 20px;
+    border-left: 1px solid gray;
+  }
+  th{
+    padding: 5px;
+  }
+
+  div#boton{
+    width: 13%;
+  }
+
+  body#fondo{
+      background-color: rgb(255, 255, 255);
+  }

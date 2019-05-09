@@ -1,0 +1,51 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0px;
+}
+
+.contenido
+{
+  height: 800px;
+}
+
+.imagenRedonda{
+  padding: 1px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 2px solid green;
+  align-content: center;
+}
+
+.imagenRedonda:hover{
+  cursor: pointer;
+  transition: 3s ease;
+  transform: scale(1.5, 1.5);
+  transition: 2 ease-out;
+}
+
+.row
+{
+  text-align: center;
+}
+
+p{
+  margin: 10px;
+}
+
+.navbar-brand{
+  font-size: 30px;
+  font-style: bold;
+}
+
+li.hover{
+  color:white;
+}
+
+
