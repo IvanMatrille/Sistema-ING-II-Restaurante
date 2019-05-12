@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Facturacion</title>
-    <link rel="stylesheet" href="estilos.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css" type="text/css">
+    <link rel="stylesheet" href="css/EstiloPrincipal.css">
 </head>
 <body>
         <?php
-        include "Conexion.php";
+        include "consultasBD/Conexion.php";
         ?>
 
     <header>

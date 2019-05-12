@@ -1,21 +1,4 @@
-html{
-    margin: 0px;
-    padding: 0px;
-  }
-
-body{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 0px;
-  }
-
-.div-registrocliente{
-  padding: 20px;
-}
-
-.div-registromesa{
-  padding: 20px;
-}
-
-.div-registrousuario{
-  padding: 20px;
+.clientes {
+  display: flex;
+  justify-content: center;
 }

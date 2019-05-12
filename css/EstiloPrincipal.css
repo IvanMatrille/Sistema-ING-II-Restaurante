@@ -1,20 +1,22 @@
-html{
-    margin: 0px;
-    padding: 0px;
-    
+html {
+  margin: 0px;
+  padding: 0px;
 }
 
-body{
+body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0px;
 }
 
-.contenido
-{
-  height: 800px;
+#facturacion {
+  text-align: center;
+}
+.facturacion {
+  display: flex;
+  justify-content: center;
 }
 
-.imagenRedonda{
+.imagenRedonda {
   padding: 1px;
   border-radius: 50%;
   height: 100px;
@@ -23,29 +25,26 @@ body{
   align-content: center;
 }
 
-.imagenRedonda:hover{
+.imagenRedonda:hover {
   cursor: pointer;
   transition: 3s ease;
   transform: scale(1.5, 1.5);
   transition: 2 ease-out;
 }
 
-.row
-{
+.row {
   text-align: center;
 }
 
-p{
+p {
   margin: 10px;
 }
 
-.navbar-brand{
+.navbar-brand {
   font-size: 30px;
   font-style: bold;
 }
 
-li.hover{
-  color:white;
+li.hover {
+  color: white;
 }
-
-
