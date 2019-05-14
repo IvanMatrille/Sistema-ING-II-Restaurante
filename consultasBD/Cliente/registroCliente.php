@@ -1,5 +1,5 @@
 <?php
-require_once 'Conexion.php';
+require_once '../Conexion.php';
 
 $nombre = $_POST['Nombre'];
 $apellido = $_POST['Apellido'];
@@ -12,8 +12,7 @@ $query = "INSERT INTO Cliente(Nombre,Apellido,Cedula,Email,Telefono,Direccion)VA
 $insertar = mysqli_query($Conexion, $query);
 
 if ($insertar) {
-    echo "OK";
-    // echo "<script>alert('Datos guardados correctamente.');</script>";
+    echo "Datos guardados correctamente";
 } else {
-    echo "<script>alert('Error al intentar guardar los datos.');</script>" . mysqli_error($Conexion);
+    echo "Error al intentar guardar los datos: ". mysqli_error($Conexion);
 }

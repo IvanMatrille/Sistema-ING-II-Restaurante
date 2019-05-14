@@ -1,7 +1,3 @@
-<?php
-require_once 'consultasBD/Conexion.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +19,8 @@ require_once 'consultasBD/Conexion.php';
     </div>
     <div class="clientes row mb-1">
         <a href="Clientes.php" class="btn btn-primary" id="actualizar">Actualizar</a>
-        <button class="btn btn-success ml-1" data-toggle="modal" data-target="#modalRegistro">Nuevo</button>
+        <button class="btn btn-success ml-1" id="btnNuevo" 
+            data-toggle="modal" data-target="#modalRegistro">Nuevo</button>
     </div>
 
     <table class="table table-sm">
@@ -34,22 +31,11 @@ require_once 'consultasBD/Conexion.php';
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Cedula</th>
+                <th>Accion</th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            $queryUsr = "SELECT Id, Nombre, Apellido, Cedula FROM Cliente";
-            $resultado = mysqli_query($Conexion, $queryUsr);
-            while ($row = $resultado->fetch_assoc()) {
-                echo "<tr>
-                        <td> </td>
-                        <td> " . $row['Id'] . "</td>
-                        <td> " . $row['Nombre'] . "</td>
-                        <td> " . $row['Apellido'] . "</td>
-                        <td> " . $row['Cedula'] . "</td>
-                    </tr>";
-            }
-            ?>
+        <tbody id="tbodyClientes">
+            <!-- Generado por js -->
         </tbody>
     </table>
 
@@ -106,7 +92,7 @@ require_once 'consultasBD/Conexion.php';
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="js/registroCliente.js"></script>
+    <script src="js/cliente.js"></script>
 </body>
 
 </html>
