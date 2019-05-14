@@ -18,8 +18,7 @@
         <h4>Clientes del restaurante</h4>
     </div>
     <div class="clientes row mb-1">
-        <a href="Clientes.php" class="btn btn-primary" id="actualizar">Actualizar</a>
-        <button class="btn btn-success ml-1" id="btnNuevo" 
+        <button class="btn btn-primary ml-1" id="btnNuevo" 
             data-toggle="modal" data-target="#modalRegistro">Nuevo</button>
     </div>
 
@@ -51,6 +50,7 @@
                 <form action="" method="POST" id="frmRegistro">
                     <div class="modal-body">
                         <div class="row">
+                            <input type="hidden" name="txtID" id="txtID">
                             <div class="col-md-6">
                                 <label for="">Nombre</label>
                                 <input id="txtNombre" name="txtNombre" required type="text" class="form-control" required>

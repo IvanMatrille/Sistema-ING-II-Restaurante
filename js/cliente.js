@@ -1,12 +1,3 @@
-let datos = {
-  Nombre: $("#txtNombre").val(),
-  Apellido: $("#txtApellido").val(),
-  Cedula: $("#txtCedula").val(),
-  Telefono: $("#txtTelefono").val(),
-  Email: $("#txtEmail").val(),
-  Direccion: $("#txtDireccion").val()
-};
-
 function lista() {
   $.ajax({
     type: "GET",
@@ -19,23 +10,74 @@ function lista() {
         row += "<tr>";
         row += "<td> </td>";
         row += "<td>" + datos[i].Id + "</td>";
-        row += "<td> "+ datos[i].Nombre +"</td>";
-        row += "<td> "+ datos[i].Apellido +"</td>";
-        row += "<td> "+ datos[i].Cedula +"</td>";
-        row += '<td> <button class="btn btn-success" data-toggle="modal" data-target="#modalRegistro">Editar</button> </td>';
+        row += "<td> " + datos[i].Nombre + "</td>";
+        row += "<td> " + datos[i].Apellido + "</td>";
+        row += "<td> " + datos[i].Cedula + "</td>";
+        row +=
+          '<td> <button class="btn btn-success" onclick="detalle(' +datos[i].Id +')" data-toggle="modal" data-target="#modalRegistro">Editar</button> </td>';
       }
 
-      $('#tbodyClientes').html(row);
+      $("#tbodyClientes").html(row);
+    }
+  });
+}
+function detalle(id) {
+  $.ajax({
+    type: "GET",
+    url: "consultasBD/Cliente/detalleCliente.php",
+    data: "id=" + id,
+    success: function(response) {
+      let datos = JSON.parse(response);
+        $('#txtID').val(datos[0].Id);
+        $("#txtNombre").val(datos[0].Nombre),
+        $("#txtApellido").val(datos[0].Apellido),
+        $("#txtCedula").val(datos[0].Cedula),
+        $("#txtTelefono").val(datos[0].Telefono),
+        $("#txtEmail").val(datos[0].Email),
+        $("#txtDireccion").val(datos[0].Direccion);
     }
   });
 }
 function registrar() {
+  let datos = {
+    Nombre: $("#txtNombre").val(),
+    Apellido: $("#txtApellido").val(),
+    Cedula: $("#txtCedula").val(),
+    Telefono: $("#txtTelefono").val(),
+    Email: $("#txtEmail").val(),
+    Direccion: $("#txtDireccion").val()
+  };
+
   $.ajax({
     type: "POST",
     url: "consultasBD/Cliente/registroCliente.php",
     data: datos,
     success: function(response) {
       alert(response);
+      $('#modalRegistro').modal('hide');
+      lista();
+    }
+  });
+}
+function actualizar() {
+  let datos = {
+    Id: $('#txtID').val(),
+    Nombre: $("#txtNombre").val(),
+    Apellido: $("#txtApellido").val(),
+    Cedula: $("#txtCedula").val(),
+    Telefono: $("#txtTelefono").val(),
+    Email: $("#txtEmail").val(),
+    Direccion: $("#txtDireccion").val()
+  };
+
+  $.ajax({
+    type: "POST",
+    url: "consultasBD/Cliente/actualizarCliente.php",
+    data: datos,
+    success: function(response) {
+      alert(response);
+      $('#modalRegistro').modal('hide');
+      lista();
     }
   });
 }
@@ -45,10 +87,17 @@ $(() => {
 
   $("#btnNuevo").click(function(e) {
     $("#frmRegistro").trigger("reset");
+    $('#txtID').val(0);
   });
 
   $("#frmRegistro").submit(function(e) {
     e.preventDefault();
-    registrar();
+    let id = $('#txtID').val();
+
+    if(id == 0) {
+      registrar();
+    } else {
+      actualizar();
+    }
   });
 });
