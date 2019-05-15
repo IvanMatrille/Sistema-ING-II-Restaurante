@@ -14,11 +14,11 @@
 <body>
     <?php include 'BarraNavegacion.html'; ?>
     <div class="divModulo">
-        <h4>Clientes del restaurante</h4>
+        <h4>Mesas</h4>
     </div>
     <div class="divModulo row mb-1">
         <button class="btn btn-primary ml-1" id="btnNuevo" 
-            data-toggle="modal" data-target="#modalRegistro">Nuevo</button>
+            data-toggle="modal" data-target="#modalRegistro">Nueva</button>
     </div>
 
     <table class="table table-sm">
@@ -26,13 +26,11 @@
             <tr>
                 <th>&nbsp;</th>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Cedula</th>
+                <th>Descripcion</th>
                 <th>Accion</th>
             </tr>
         </thead>
-        <tbody id="tbodyClientes">
+        <tbody id="tbodyMesas">
             <!-- Generado por js -->
         </tbody>
     </table>
@@ -48,36 +46,11 @@
                 </div>
                 <form action="" method="POST" id="frmRegistro">
                     <div class="modal-body">
-                        <div class="row">
-                            <input type="hidden" name="txtID" id="txtID">
-                            <div class="col-md-6">
-                                <label for="">Nombre</label>
-                                <input id="txtNombre" name="txtNombre" required type="text" class="form-control">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Apellido</label>
-                                <input id="txtApellido" name="txtApellido" required type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-md-6">
-                                <label for="">Cedula</label>
-                                <input id="txtCedula" name="txtCedula" required type="text" class="form-control">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Telefono</label>
-                                <input id="txtTelefono" name="txtTelefono" type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-2">
-                            <label for="">Email</label>
-                            <input id="txtEmail" name="txtEmail" required type="email" class="form-control">
-                        </div>
+                        <input type="hidden" name="txtID" id="txtID">
+                        
                         <div class="form-group">
-                            <label for="">Direccion</label>
-                            <input id="txtDireccion" name="txtDireccion" required type="text" class="form-control">
+                            <label for="">Descripcion</label>
+                            <input id="txtDescripcion" name="txtDescripcion" required type="text" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -91,7 +64,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="js/cliente.js"></script>
+    <script src="js/mesa.js"></script>
 </body>
 
 </html>

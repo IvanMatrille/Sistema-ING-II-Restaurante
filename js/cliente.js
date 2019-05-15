@@ -1,7 +1,7 @@
 function lista() {
   $.ajax({
     type: "GET",
-    url: "consultasBD/Cliente/listaClientes.php",
+    url: "BD/Cliente/listaClientes.php",
     success: function(response) {
       let datos = JSON.parse(response);
       let row = "";
@@ -24,7 +24,7 @@ function lista() {
 function detalle(id) {
   $.ajax({
     type: "GET",
-    url: "consultasBD/Cliente/detalleCliente.php",
+    url: "BD/Cliente/detalleCliente.php",
     data: "id=" + id,
     success: function(response) {
       let datos = JSON.parse(response);
@@ -50,7 +50,7 @@ function registrar() {
 
   $.ajax({
     type: "POST",
-    url: "consultasBD/Cliente/registroCliente.php",
+    url: "BD/Cliente/registroCliente.php",
     data: datos,
     success: function(response) {
       alert(response);
@@ -72,7 +72,7 @@ function actualizar() {
 
   $.ajax({
     type: "POST",
-    url: "consultasBD/Cliente/actualizarCliente.php",
+    url: "BD/Cliente/actualizarCliente.php",
     data: datos,
     success: function(response) {
       alert(response);

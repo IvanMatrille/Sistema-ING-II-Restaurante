@@ -16,7 +16,7 @@
     <a class="navbar-brand active" href="#">Facturacion y Restaurante</a>
   </div>
 
-  <?php include 'BarraNavegacion.php'; ?>
+  <?php include 'BarraNavegacion.html'; ?>
   <!--CAROUSEL-->
   <div id="carouselExampleIndicators" class="container carousel slide" data-interval="5000" data-ride="carousel">
     <ol class="carousel-indicators">

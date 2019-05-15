@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include 'BarraNavegacion.php'; ?>
+    <?php include 'BarraNavegacion.html'; ?>
     <div class="divModulo">
         <h4>Productos o servicios del restaurante</h4>
     </div>
