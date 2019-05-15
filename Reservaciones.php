@@ -16,15 +16,12 @@
 
 <body>
     <?php include 'BarraNavegacion.php'; ?>
-
     <!--FORMULARIO DE REGISTRO DE-->
     <div class="container div-registroreservaciones">
-
         <!--Modal de Busqueda-->
         <div class="modal" id="modalClientes">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title">Buscar Clientes</h4>
@@ -132,7 +129,7 @@
             <div>
                 <label for="">Codigo</label>
                 <input id="txtCodigo" name="txtCodigo" type="text" placeholder="Codigo" class="form-control" required>
-                <button type="button" class="btn btn-primary" id="btnCodigo"><i class="fas fa-search"></i>Buscar Cliente</button>
+                <button type="button" class="btn btn-primary" id="btnCodigo"><i class="fas fa-search"></i> Buscar Cliente</button>
             </div>
             </br>
             <div style="margin-left: 25px;">
@@ -149,7 +146,7 @@
                 <label for="">Mesa No.</label>
 
                 <input id="txtMesa" name="txtMesa" type="text" placeholder="Mesa" class="form-control" required>
-                <button type="button" class="btn btn-primary" id="btnCodigoMesas"><i class="fas fa-search"></i>Buscar Mesa</button>
+                <button type="button" class="btn btn-primary" id="btnCodigoMesas"><i class="fas fa-search"></i> Buscar Mesa</button>
             </div>
             </br>
             <div style="margin-left: 25px;">

@@ -1,5 +1,5 @@
 <div class="facturacion">
-    <nav class="navbar navbar-expand-lg bg-white" id="nav">
+    <nav class="navbar navbar-expand bg-white" id="nav">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -7,8 +7,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse float-right"
-            id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="Index.php">Inicio <span
@@ -33,8 +32,7 @@
                         aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="Clientes.php">Clientes</a>
                         <a class="dropdown-item"
-                            href="RegistroProducto.php">Registro
-                            de Producto</a>
+                            href="Producto.php">Productos</a>
                         <a class="dropdown-item" href="RegistroMesa.php">Registro
                             de Mesas</a>
                         <div class="dropdown-divider"></div>
