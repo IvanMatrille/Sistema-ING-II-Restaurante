@@ -62,7 +62,7 @@
   <div id="contenido" class="contenido row" style="margin-top:20px;text-align:center;">
     <div class="col">
       <h2>Platos del Dia</h2>
-      <a href="#">
+      <a href="Platos.php">
         <img src="Resources/plato1.jpg" class="imagenRedonda" heigth="200px" width="200px" title="Platos del dia" />
         <p>Tenemos los mejores platos del pais al mejor precio.</p>
       </a>

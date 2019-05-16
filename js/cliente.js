@@ -21,6 +21,7 @@ function lista() {
     }
   });
 }
+
 function detalle(id) {
   $.ajax({
     type: "GET",

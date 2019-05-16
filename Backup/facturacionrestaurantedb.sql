@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-12-2018 a las 13:03:27
--- Versión del servidor: 5.7.19
--- Versión de PHP: 5.6.31
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-05-2019 a las 03:24:39
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,24 +28,22 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cliente`
 --
 
-DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE IF NOT EXISTS `cliente` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cliente` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(50) DEFAULT NULL,
   `Apellido` varchar(50) NOT NULL,
   `Cedula` varchar(18) NOT NULL,
   `Telefono` varchar(15) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Direccion` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+  `Direccion` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`Id`, `Nombre`, `Apellido`, `Cedula`, `Telefono`, `Email`, `Direccion`) VALUES
-(1, '', '', '', '', '', ''),
+(1, 'Ivan ', 'De Jesus Matrille', '402-11111111', '829-222-2222', 'id@gmail.com', 'Mi casa'),
 (2, 'sdfgsdfg', 'sdfgsdfgsdfg', 'sdfgsdfg', 'dfsgsdg', 'sdfgsdfgsdg', 'sdfgsdfg'),
 (3, 'dsgsdfgs', 'dfgsdfg', 'gsdfgsdfgsd', 'fgsdfgsdfgs', 'fgsdfgsdfgsd', 'dfgsdfgsdfg'),
 (4, 'asdfadsfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdfsadf'),
@@ -63,15 +61,13 @@ INSERT INTO `cliente` (`Id`, `Nombre`, `Apellido`, `Cedula`, `Telefono`, `Email`
 -- Estructura de tabla para la tabla `detallespedido`
 --
 
-DROP TABLE IF EXISTS `detallespedido`;
-CREATE TABLE IF NOT EXISTS `detallespedido` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detallespedido` (
+  `Id` int(11) NOT NULL,
   `IdMesa` int(11) DEFAULT NULL,
   `IdPlato` int(11) DEFAULT NULL,
   `Cantidad` int(11) DEFAULT NULL,
   `IdMesero` int(11) DEFAULT NULL,
-  `Fecha` datetime DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `Fecha` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,12 +76,10 @@ CREATE TABLE IF NOT EXISTS `detallespedido` (
 -- Estructura de tabla para la tabla `mesa`
 --
 
-DROP TABLE IF EXISTS `mesa`;
-CREATE TABLE IF NOT EXISTS `mesa` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Descripcion` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+CREATE TABLE `mesa` (
+  `Id` int(11) NOT NULL,
+  `Descripcion` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mesa`
@@ -101,12 +95,10 @@ INSERT INTO `mesa` (`Id`, `Descripcion`) VALUES
 -- Estructura de tabla para la tabla `pedido`
 --
 
-DROP TABLE IF EXISTS `pedido`;
-CREATE TABLE IF NOT EXISTS `pedido` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pedido` (
+  `Id` int(11) NOT NULL,
   `Descripcion` varchar(200) DEFAULT NULL,
-  `Estado` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `Estado` varchar(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,13 +107,31 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 -- Estructura de tabla para la tabla `permisos`
 --
 
-DROP TABLE IF EXISTS `permisos`;
-CREATE TABLE IF NOT EXISTS `permisos` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `permisos` (
+  `Id` int(11) NOT NULL,
   `nombre_permiso` varchar(100) DEFAULT NULL,
-  `IdUsuario` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `IdUsuario` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `platos`
+--
+
+CREATE TABLE `platos` (
+  `Id` int(11) NOT NULL,
+  `Descripcion` varchar(50) NOT NULL,
+  `Precio` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `platos`
+--
+
+INSERT INTO `platos` (`Id`, `Descripcion`, `Precio`) VALUES
+(1, 'Arroz con maiz, pollo frito y ensalada verde.', 250),
+(2, 'Moro de guandules, pica pica y aguacate', 225);
 
 -- --------------------------------------------------------
 
@@ -129,9 +139,8 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 -- Estructura de tabla para la tabla `producto`
 --
 
-DROP TABLE IF EXISTS `producto`;
-CREATE TABLE IF NOT EXISTS `producto` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `producto` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `Referencia` varchar(100) NOT NULL,
   `CantidadInicial` int(11) NOT NULL DEFAULT '0',
@@ -139,9 +148,8 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `Ubicacion` varchar(100) NOT NULL,
   `ITBIS` double NOT NULL,
   `Precio` double NOT NULL,
-  `Costo` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+  `Costo` decimal(10,0) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -177,14 +185,12 @@ INSERT INTO `producto` (`Id`, `Nombre`, `Referencia`, `CantidadInicial`, `Catego
 -- Estructura de tabla para la tabla `reservaciones`
 --
 
-DROP TABLE IF EXISTS `reservaciones`;
-CREATE TABLE IF NOT EXISTS `reservaciones` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reservaciones` (
+  `Id` int(11) NOT NULL,
   `Codigo` varchar(30) DEFAULT NULL,
   `Mesa` varchar(30) DEFAULT NULL,
-  `Fecha` date DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `Fecha` date DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `reservaciones`
@@ -199,16 +205,14 @@ INSERT INTO `reservaciones` (`Id`, `Codigo`, `Mesa`, `Fecha`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuario` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `Apellido` varchar(100) NOT NULL,
   `NombreUsuario` varchar(100) NOT NULL,
   `RolUsuario` varchar(50) NOT NULL,
-  `Contrasena` varchar(65000) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `Contrasena` varchar(65000) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -227,6 +231,122 @@ INSERT INTO `usuario` (`Id`, `Nombre`, `Apellido`, `NombreUsuario`, `RolUsuario`
 (10, 'junio', 'amaro', 'amaro', 'Administrador,', '124'),
 (11, '7', 'errwertert', 'ewrtwertewrrt', ',', 'sdfasdfasdf'),
 (12, 'sadfasdf', 'asdfasdf', 'sadfasdfsadf,', ',', 'safddffgasdfdsf');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `detallespedido`
+--
+ALTER TABLE `detallespedido`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `mesa`
+--
+ALTER TABLE `mesa`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `platos`
+--
+ALTER TABLE `platos`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `reservaciones`
+--
+ALTER TABLE `reservaciones`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `detallespedido`
+--
+ALTER TABLE `detallespedido`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `mesa`
+--
+ALTER TABLE `mesa`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `platos`
+--
+ALTER TABLE `platos`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `reservaciones`
+--
+ALTER TABLE `reservaciones`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
