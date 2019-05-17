@@ -27,6 +27,7 @@
                 <th>ID</th>
                 <th>Descripcion</th>
                 <th>Fecha</th>
+                <th>Hora</th>
                 <th>Accion</th>
             </tr>
         </thead>

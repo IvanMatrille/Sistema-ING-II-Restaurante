@@ -63,7 +63,7 @@
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label for="">Cedula</label>
-                                <input id="txtCedula" name="txtCedula" required type="text" class="form-control">
+                                <input id="txtCedula" name="txtCedula" type="text" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Telefono</label>

@@ -2,3 +2,7 @@
   display: flex;
   justify-content: center;
 }
+
+.thReservacion {
+  text-align: left;
+}

@@ -4,7 +4,7 @@ require_once '../Conexion.php';
 $busqueda = $_GET['busqueda'];
 
 $rows = array();
-$queryUsr = "SELECT Id, Descripcion, Fecha FROM Pedido WHERE Descripcion like CONCAT('%', '$busqueda', '%')";
+$queryUsr = "SELECT Id, Descripcion, Fecha, Hora FROM Pedido WHERE Descripcion like CONCAT('%', '$busqueda', '%')";
 $resultado = mysqli_query($Conexion, $queryUsr);
 
 while ($row = $resultado->fetch_assoc()) {

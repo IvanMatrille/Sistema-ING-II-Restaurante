@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include 'BarraNavegacion.php'; ?>
+    <?php include 'BarraNavegacion.html'; ?>
     <!--Modal de Busqueda-->
     <div class="modal" id="modalClientes">
         <div class="modal-dialog">
