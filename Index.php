@@ -45,20 +45,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <div id="txtBuscaComida" class="container">
-    <form action="" method="POST" class="form">
-      <div class="row">
-        <div class="col">
-          <div class="input-group no-margin">
-            <input type="text" class="txtBusqueda form-control input-lg input-search " name="txtBusqueda" id="txtBusqueda">
-            <span class="input-group-btn ml-2">
-              <button id="btnBuscaComida" class="btn btn-danger">Buscar Comida</button>
-            </span>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+  
   <div id="contenido" class="contenido row" style="margin-top:20px;text-align:center;">
     <div class="col">
       <h2>Platos del Dia</h2>
