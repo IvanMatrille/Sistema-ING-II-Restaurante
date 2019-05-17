@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-05-2019 a las 14:00:18
+-- Tiempo de generación: 17-05-2019 a las 20:06:23
 -- Versión del servidor: 10.3.13-MariaDB
 -- Versión de PHP: 7.2.16
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `DetallePedido` (
 CREATE TABLE IF NOT EXISTS `Mesa` (
   `Id` int(11) NOT NULL,
   `Descripcion` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Mesa`
@@ -76,7 +76,8 @@ CREATE TABLE IF NOT EXISTS `Mesa` (
 
 INSERT INTO `Mesa` (`Id`, `Descripcion`) VALUES
 (1, 'Mesa buffet'),
-(2, 'Mesa pichadera');
+(2, 'Mesa pichadera'),
+(3, 'Ensaladas, #4');
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,17 @@ CREATE TABLE IF NOT EXISTS `Reservaciones` (
   `IdCliente` int(11) NOT NULL,
   `IdMesa` int(11) NOT NULL,
   `Fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Reservaciones`
+--
+
+INSERT INTO `Reservaciones` (`Id`, `IdCliente`, `IdMesa`, `Fecha`) VALUES
+(1, 3, 1, '2019-05-17'),
+(2, 2, 2, '2019-05-17'),
+(3, 2, 2, '2019-05-17'),
+(4, 3, 3, '2019-05-17');
 
 -- --------------------------------------------------------
 
@@ -289,7 +300,7 @@ ALTER TABLE `DetallePedido`
 -- AUTO_INCREMENT de la tabla `Mesa`
 --
 ALTER TABLE `Mesa`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `Pedido`
 --
@@ -314,7 +325,7 @@ ALTER TABLE `Producto`
 -- AUTO_INCREMENT de la tabla `Reservaciones`
 --
 ALTER TABLE `Reservaciones`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `RolUsuario`
 --
