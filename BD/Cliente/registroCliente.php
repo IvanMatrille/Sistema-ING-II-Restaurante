@@ -12,7 +12,7 @@ $query = "INSERT INTO Cliente(Nombre,Apellido,Cedula,Email,Telefono,Direccion)VA
 $insertar = mysqli_query($Conexion, $query);
 
 if ($insertar) {
-    echo "Datos guardados correctamente";
+    echo 1;
 } else {
     echo "Error al intentar guardar los datos: ". mysqli_error($Conexion);
 }

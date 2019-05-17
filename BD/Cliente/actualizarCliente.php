@@ -14,7 +14,7 @@ $query = "UPDATE Cliente SET Nombre='$nombre', Apellido='$apellido', Cedula='$ce
 $insertar = mysqli_query($Conexion, $query);
 
 if ($insertar) {
-    echo "Datos actualizados correctamente";
+    echo 1;
 } else {
     echo "Error al intentar guardar los datos: ". mysqli_error($Conexion);
 }

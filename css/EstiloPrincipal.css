@@ -32,19 +32,6 @@ body {
   transition: 2 ease-out;
 }
 
-.row {
-  text-align: center;
-}
-
-p {
-  margin: 10px;
-}
-
-.navbar-brand {
-  font-size: 30px;
-  font-style: bold;
-}
-
 li.hover {
   color: white;
 }

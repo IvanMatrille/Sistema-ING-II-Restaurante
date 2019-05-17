@@ -3,6 +3,14 @@
   justify-content: center;
 }
 
-.thReservacion {
+.thReservacion th {
   text-align: left;
+}
+
+.thReservacion td {
+  text-align: right;
+}
+
+.registrar {
+  text-align: center;
 }

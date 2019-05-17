@@ -56,7 +56,7 @@
     </div>
     <div class="col">
       <h2>Reservaciones</h2>
-      <a href="Reservaciones.php">
+      <a href="RegistroReservacion.php">
         <img src="Resources/reservacion.jpg" class="imagenRedonda" heigth="200px" width="200px" title="Reservaciones" />
         <p>Haga sus reservaciones a tiempo.</p>
       </a>
