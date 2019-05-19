@@ -1,11 +1,5 @@
-html {
-  margin: 0px;
-  padding: 0px;
-}
-
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0px;
 }
 
 #facturacion {
@@ -30,8 +24,4 @@ body {
   transition: 3s ease;
   transform: scale(1.5, 1.5);
   transition: 2 ease-out;
-}
-
-li.hover {
-  color: white;
 }

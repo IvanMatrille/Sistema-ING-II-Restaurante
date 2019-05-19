@@ -1,8 +1,8 @@
 <?php
-    $usuario = "xmedical";
-    $contrasena="mdav4000";
+    $usuario = "root";
+    $contrasena="";
     $bd = "facturacionrestaurantedb";
-    $host ="172.20.1.12";
-
+    $host ="localhost";
+//172.20.1.12
     $Conexion = mysqli_connect($host,$usuario,$contrasena,$bd);
 ?>

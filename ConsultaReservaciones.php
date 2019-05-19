@@ -25,6 +25,7 @@
                 <th>Cliente</th>
                 <th>Mesa</th>
                 <th>Fecha</th>
+                <th>Hora</th>
             </tr>
         </thead>
         <tbody id="tbodyReservaciones">

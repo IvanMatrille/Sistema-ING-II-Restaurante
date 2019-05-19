@@ -10,326 +10,170 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/EstiloPrincipal.css">
+    <link rel="stylesheet" type="text/css" href="css/Registros.css">
 </head>
 
 <body>
     <?php include 'BarraNavegacion.html'; ?>
-    <!--Modal de Busqueda-->
-    <div class="modal" id="modalClientes">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Buscar Clientes</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <table id="tablaClientes" class="table table-hover table-striped">
-                        <thead>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Telefono</th>
-                            <th>Cédula</th>
-                        </thead>
-                        <tbody>
-
-                            <?php
-                            include 'consultasBD/Conexion.php';
-                            $dataRow = "";
-                            $resultado = "";
-                            $query = "SELECT Id,nombre,apellido,telefono,cedula FROM cliente";
-
-                            $resultado = mysqli_query($Conexion, $query);
-                            while ($row = mysqli_fetch_array($resultado)) {
-
-                                echo "<tr>
-            <td>" . $row['Id'] . "</td>
-            <td>" . $row['nombre'] . ' ' . $row['apellido'] . "</td>
-            <td>" . $row['telefono'] . "</td>
-            <td>" . $row['cedula'] . "</td>
-            </tr>";
-                            }
-                            ?>
-
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button id="salirModal" type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!--Modal de Busqueda Finalizado-->
-
-
-    <!--Modal de Busqueda de Mesas-->
-    <div class="modal" id="modalMesas">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Buscar Mesas</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal Mesa -->
-                <div class="modal-body">
-                    <table id="tablaMesas" class="table table-hover table-striped">
-                        <thead>
-                            <th>Id</th>
-                            <th>Mesa</th>
-                        </thead>
-                        <tbody>
-
-                            <?php
-                            include 'Conexion.php';
-                            $dataRow = "";
-                            $resultado = "";
-                            $query = "SELECT Id,descripcion FROM mesa";
-
-                            $resultado = mysqli_query($Conexion, $query);
-                            while ($row = mysqli_fetch_array($resultado)) {
-
-                                echo " <tr>
-                <td>" . $row['Id'] . "</td>
-                <td>" . $row['descripcion'] . "</td>
-                </tr>
-                ";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button id="salirModalMesas" type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-                </div>
-            </div>
-        </div>
+    <div class="divModulo">
+        <h4>Facturar</h4>
     </div>
 
     <div class="container">
-        <h2>Facturación</h2>
-        <form class="form-group" action="<?php $_PHP_SELF ?>" method="POST">
-            <div style="border: solid 1px; padding: 5px;">
-                <label>Fecha: </label>
-                <input size="25%" type="datetime" name="txtfecha" value="<?php echo date("d-m-Y"); ?>">
-                <label>No. de Turno: </label>
-                <input type="text" name="txtTurno" value="01">
-                <label>Cajera: </label>
-                <input size="25%" type="text" name="txtTurno" value="Rosa Maria Burgos">
-            </div>
-            <br>
-            <div style="border: solid 1px; padding: 5px; float: left;">
-                <label for="">Mesa No.</label>
-                <input size="25%" id="txtMesa" name="txtMesa" type="text" placeholder="Mesa">
-                <button type="button" id="btnCodigoMesas" class="btn btn-primary fas fa-search"></button>
-
-                <label>Tipo de Comprovante.</label>
-                <select id="disabledSelect">
-                    <option>Consumidor Final</option>
-                    <option>Valor Fiscal</option>
-                    <option>Gubernamental</option>
-                    <option>Regimenes Especiales</option>
-                </select>
-
-                <br>
-                <label for="">Mesero: </label>
-                <input size="25%" type="text" name="txtmesero" value="Juan Rubiera">
-                <label id="numerocomprovante" style="margin-left:220px;" for="">B0200003736</label>
-                <br>
-                <br>
-                <br>
-
-            </div>
-
-            <div>
-                <label style="margin-left:10px;">Cliente.</label>
-                <input size="15%" id="txtCodigo" name="txtClienteCodigo" type="text" placeholder="Codigo">
-                <button type="button" id="btnCodigo" class="btn btn-primary fas fa-search"></button>
-                <br>
-                <label id="nombre" style="margin-left:15px;">-</label><br>
-                <label style="margin-left:15px;">RNC.: </label>
-                <label id="cedula" style="margin-left:15px;" for="">-</label><br>
-                <label style="margin-left:15px;">Tel.: </label>
-                <label id="telefono" style="margin-left:15px;" for="">-</label>
-            </div>
-
-            <br>
-            <div class="datagrid">
+        <div class="btn-facturar mb-1">
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registrar</button>
+        </div>
+        <div class="card">
+            <div class="card-body">
                 <div class="row">
-                    <div style="border: solid;" class="col-sm-2">Codigo</div>
-                    <div style="border: solid;" class="col-sm-6">Descripción</div>
-                    <div style="border: solid;" class="col-sm-4">Precio $RD</div>
-                </div>
-                <div class="row">
-                    <div style="border: solid 1px; text-align: left; " class="col-sm-2">1001</div>
-                    <div style="border: solid 1px; text-align: left; " class="col-sm-6">Carne Asada</div>
-                    <div style="border: solid 1px; text-align: right; " class="col-sm-4">495.00</div>
-                </div>
-                <div class="row">
-                    <div style="border: solid 1px; text-align: left; " class="col-sm-2">1002</div>
-                    <div style="border: solid 1px; text-align: left; " class="col-sm-6">Pure de Papa</div>
-                    <div style="border: solid 1px; text-align: right; " class="col-sm-4">250.00</div>
-                </div><br>
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4"></div>
-                    <div style="text-align: right; " class="col-sm-4"> Total:</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4"></div>
-                    <div style="border: solid 1px; text-align: right;" class="col-sm-4">
-                        <div>745.00</div>
-                        <label>+10% Propina. 74.50</label><br>
-                        <label>---------------------</label><br>
-                        <label>RD$. 819.50</label>
+                    <div class="col-md-4">
+                        <label for="">Cajero/ra</label>
+                        <select type="text" class="form-control" id="cajero">
+                            <!-- JS -->
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">Mesa</label>
+                        <select type="text" class="form-control" id="mesa">
+                            <!-- JS -->
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">Mesero</label>
+                        <select type="text" class="form-control" id="mesero">
+                            <!-- JS -->
+                        </select>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="card mt-3 table-responsive">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <button class="btn btn-outline-success" id="btnCliente" data-toggle="modal" data-target="#modalCliente">Buscar cliente</button>
+                        </div>
+                        <div class="mt-1">
+                            <table class="table table-sm">
+                                <thead>
+                                    <th>Codigo</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Telefono</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="idCliente"></td>
+                                        <td id="tdNombre"></td>
+                                        <td id="tdApellido"></td>
+                                        <td id="tdTelefono"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <br>
-            <br>
+        <div class="card mt-3 mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="float-right mr-2">
+                            <table class="thFacturacion">
+                                <tr>
+                                    <th>Propina: </th>
+                                    <td id="tdPropina">RD$ 150</td>
+                                </tr>
+                                <tr>
+                                    <th>Precio productos: </th>
+                                    <td id="tdPrecioProductos">RD$ 2000</td>
 
-            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>Registrar</button>
-            <button type="submit" class="btn btn-warning"><i class="fas fa-repeat"></i>Retornar</button>
-            <button type="submit" class="btn btn-danger"><i class="fas fa-eraser"></i>Cancelar</button>
-        </form>
+                                    <th>Total: </th>
+                                    <td id="tdPrecioTotal">RD$ 2150</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-outline-success" id="btnPlatos" data-toggle="modal" data-target="#modalPlatos">Agregar platos</button>
+                        <table class="table table-sm mt-1">
+                            <thead>
+                                <th>Codigo</th>
+                                <th>Descripcion</th>
+                                <th>Cantidad</th>
+                                <th>Precio RD$</th>
+                                <th>Accion</th>
+                            </thead>
+                            <tbody id="tbodyVenta">
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Seleccionar el cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Accion</th>
+                        </thead>
+                        <tbody id="tbodyClientes">
+                            <!-- JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalPlatos" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar platos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>ID</th>
+                            <th>Descripcion</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Accion</th>
+                        </thead>
+                        <tbody id="tbodyPlatos">
+                            <!-- JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+    <script src="js/facturacion.js">
+    </script>
 </body>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        //Suscribir los elementos al manejo de eventos
-
-        $("#modalClientes tbody tr").on("dblclick", function(event) {
-            if (pickedup != null) {
-                pickedup.css("background-color", "transparent");
-            }
-
-            $("#nombre").text($(this).find("td").eq(1).html());
-            $("#telefono").text($(this).find("td").eq(2).html());
-            $("#cedula").text($(this).find("td").eq(3).html());
-            $("#txtCodigo").val($(this).find("td").eq(0).html());
-            // Si esta Seleccionado Pintar de Rojo
-            $(this).css("background-color", "red");
-
-            pickedup = $(this);
-
-            $('#modalClientes').modal('hide');
-            //$('#txtMesa').focus();
-        });
-
-        $("#modalMesas tbody tr").on("dblclick", function(event) {
-            if (pickedup != null) {
-                pickedup.css("background-color", "transparent");
-            }
-
-            $("#mesa").text($(this).find("td").eq(1).html());
-            $("#txtMesa").val($(this).find("td").eq(0).html());
-            // Si esta Seleccionado Pintar de Rojo
-            $(this).css("background-color", "red");
-
-            pickedup = $(this);
-
-            $('#modalMesas').modal('hide');
-            $('#txtFecha').focus();
-        });
-
-        $('#txtCodigo').on('keyup', function(evento) {
-            if (evento.key.toUpperCase() === 'F2') {
-                mostrarModal();
-            }
-
-        });
-        $('#txtMesa').on('keyup', function(evento) {
-            if (evento.key.toUpperCase() === 'F2') {
-                mostrarModalMesas();
-            }
-
-        });
-        $('#btnCodigo').on('click', function(evento) {
-            mostrarModal("modalClientes");
-        });
-        $('#btnCodigoMesas').on('click', function(evento) {
-            mostrarModalMesas("modalMesas");
-        });
-        $("#txtCodigo").focus(function() {
-            $(this).attr('placeholder', "Codigo - Presione F2 para Buscar");
-        });
-        $("#txtMesa").focus(function() {
-            $(this).attr('placeholder', "Codigo - Presione F2 para Buscar");
-        });
-        $("#txtCodigo").blur(function() {
-            $(this).attr('placeholder', "Codigo");
-        });
-        $("#txtMesa").blur(function() {
-            $(this).attr('placeholder', "Codigo");
-        });
-        //Inicializar Tablas con DataTable
-        $('#tablaClientes').DataTable({
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ registros por página",
-                "zeroRecords": "Lo Sentimos, no existen registros con los datos especificados",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles",
-                "infoFiltered": "(Filtrados de un total de _MAX_ registros)",
-                "search": "Buscar:",
-                "paginate": {
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                }
-            }
-        });
-
-        $('#tablaMesas').DataTable({
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ registros por página",
-                "zeroRecords": "Lo Sentimos, no existen registros con los datos especificados",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles",
-                "infoFiltered": "(Filtrados de un total de _MAX_ registros)",
-                "search": "Buscar:",
-                "paginate": {
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                }
-            }
-        });
-        $('#txtCodigo').focus();
-    });
-
-    function mostrarModal(idModal = 'modalClientes') {
-        $('#modalClientes').modal('show');
-        $('#txtCodigo').blur();
-        $('#modalClientes div.dataTables_filter input').focus();
-    }
-
-    function mostrarModalMesas(idModal = 'modalMesas') {
-        $('#modalMesas').modal('show');
-        $('#txtMesas').blur();
-        $('#modalMesas div.dataTables_filter input').focus();
-    }
-
-    var pickedup;
-</script>
 
 </html>

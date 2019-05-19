@@ -2,8 +2,8 @@
 require_once '../Conexion.php';
 
 $rows = array();
-$queryUsr = "SELECT r.Id, CONCAT(c.Nombre, ' ', c.Apellido) 'NombreCliente', m.Descripcion 'DescripcionMesa', r.Fecha
-            FROM Reservaciones r INNER JOIN Cliente c ON r.IdCliente = c.Id INNER JOIN Mesa m ON r.IdMesa = m.Id";
+$queryUsr = "SELECT r.Id, CONCAT(c.Nombre, ' ', c.Apellido) 'NombreCliente', m.Descripcion 'DescripcionMesa', r.Fecha,
+             r.Hora FROM Reservaciones r INNER JOIN Cliente c ON r.IdCliente = c.Id INNER JOIN Mesa m ON r.IdMesa = m.Id";
 
 $resultado = mysqli_query($Conexion, $queryUsr);
 

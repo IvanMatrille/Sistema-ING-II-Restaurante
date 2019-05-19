@@ -1,8 +1,10 @@
-<?php 
+<?php
 require_once '../Conexion.php';
 
+$rol = $_GET['Rol'];
+
 $rows = array();
-$queryUsr = "SELECT Id, Nombre, Apellido, Cedula, Telefono FROM Cliente ORDER BY Id";
+$queryUsr = "SELECT Id, CONCAT(Nombre, ' ', Apellido) 'NombreEmpleado' FROM usuario WHERE IdRolUsuario = $rol";
 $resultado = mysqli_query($Conexion, $queryUsr);
 
 while ($row = $resultado->fetch_assoc()) {

@@ -1,16 +1,21 @@
 .divModulo {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .thReservacion th {
-  text-align: left;
+    text-align: left;
 }
 
 .thReservacion td {
-  text-align: right;
+    text-align: right;
+}
+
+.thFacturacion th,
+.btn-facturar {
+    text-align: right;
 }
 
 .registrar {
-  text-align: center;
+    text-align: center;
 }

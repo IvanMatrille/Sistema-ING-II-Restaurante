@@ -20,7 +20,7 @@
     <div class="divModulo">
         <h4>Reservaciones de mesa</h4>
     </div>
-    <div class="container col-md-4">
+    <div class="container col-md-6">
         <div class="card">
             <div class="card-body">
                 <label for="">Cliente </label>
@@ -84,12 +84,25 @@
                 </div>
             </div>
         </div>
+        <div class="card mt-2">
+            <div class="card-body">
+                <label for="">Hora </label>
+                <div class="input-group">
+                    <select id="hora" class="form-control">
+                        <!-- JS -->
+                    </select>
+                    <select id="tipo" class="form-control">
+                        <option value="am">a.m.</option>
+                        <option value="pm">p.m.</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="registrar mt-3">
-        <form action="BD/Reservacion/registroReservacion.php" id="formRegistro" method="POST">
-            <button type="submit" class="btn btn-primary">Registrar</button>
-        </form>
+    <div class="registrar mt-3 mb-3">
+        <button id="btnRegistrar" class="btn btn-primary">Registrar</button>
+        <button id="btnUsada" class="btn btn-success">Reservacion en uso</button>
     </div>
 
     <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-hidden="true">

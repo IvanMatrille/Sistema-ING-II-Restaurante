@@ -4,23 +4,33 @@ require_once '../Conexion.php';
 $idCliente = $_POST['IdCliente'];
 $idMesa = $_POST['IdMesa'];
 $fecha = $_POST['Fecha'];
+$hora = $_POST['Hora'];
 
-$insert = "INSERT INTO Reservaciones(IdCliente, IdMesa, Fecha) VALUES($idCliente, $idMesa, '$fecha')";
+$insert = "INSERT INTO Reservaciones(IdCliente, IdMesa, Fecha, Hora) VALUES($idCliente, $idMesa, '$fecha', '$hora')";
 
-$curDate = "SELECT CURDATE()";
-$resultado = mysqli_query($Conexion, $curDate);
+$query = "SELECT CURDATE()";
+$result = mysqli_query($Conexion, $query);
+$hoy = '';
 
-if ($row = $resultado->fetch_assoc()) {
+if($row = $result->fetch_assoc()) {
     $hoy = $row['CURDATE()'];
 }
 
-if ($hoy <= $fecha) {
-    $insertar = mysqli_query($Conexion, $insert);
+$hayRes = "SELECT IdMesa, Fecha, Hora FROM reservaciones 
+           WHERE Fecha = '$fecha' AND Hora = '$hora' AND IdMesa = $idMesa";
+$resultado = mysqli_query($Conexion, $hayRes);
 
-    if ($insertar) {
-        echo 1;
+if ($hoy <= $fecha) {
+    if (mysqli_num_rows($resultado) < 1) {
+        $insertar = mysqli_query($Conexion, $insert);
+        
+        if ($insertar) {
+            echo 1;
+        } else {
+            echo mysqli_error($Conexion);
+        }
     } else {
-        echo mysqli_error($Conexion);
+        echo -1;
     }
 } else {
     echo 0;
