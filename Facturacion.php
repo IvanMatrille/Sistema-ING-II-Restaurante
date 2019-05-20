@@ -127,6 +127,7 @@
                         </button>
                 </div>
                 <div class="modal-body table-responsive">
+                <input type="text" id="busquedaCliente" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
                     <table class="table table-sm">
                         <thead>
                             <th>ID</th>
@@ -153,10 +154,11 @@
                             </button>
                 </div>
                 <div class="modal-body table-responsive">
+                <input type="text" id="busquedaPlato" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
                     <table class="table table-sm">
                         <thead>
                             <th>ID</th>
-                            <th>Descripcion</th>
+                            <th>Nombre</th>
                             <th>Cantidad</th>
                             <th>Precio</th>
                             <th>Accion</th>

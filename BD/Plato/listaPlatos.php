@@ -1,8 +1,10 @@
 <?php
 require_once '../Conexion.php';
 
+$busqueda = $_GET['busqueda'];
+
 $rows = array();
-$queryUsr = "SELECT Id, Nombre, Referencia, Categoria, Precio FROM Producto";
+$queryUsr = "SELECT Id, Nombre, Ubicacion, Cantidad, Precio FROM Plato WHERE Nombre like CONCAT('%', '$busqueda', '%')";
 $resultado = mysqli_query($Conexion, $queryUsr);
 
 while ($row = $resultado->fetch_assoc()) {

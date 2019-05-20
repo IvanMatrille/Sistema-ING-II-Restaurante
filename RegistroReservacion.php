@@ -115,6 +115,7 @@
                     </button>
                 </div>
                 <div class="modal-body table-responsive">
+                    <input type="text" id="busquedaCliente" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
                     <table class="table table-sm">
                         <thead>
                             <th>Nombre</th>

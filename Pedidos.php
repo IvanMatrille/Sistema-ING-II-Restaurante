@@ -57,8 +57,6 @@
                         <div class="form-group">
                             <label for="">Estado</label>
                             <select name="Estado" id="Estado" class="form-control">
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="Realizado">Realizado</option>
                             </select>

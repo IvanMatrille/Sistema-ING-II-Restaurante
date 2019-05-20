@@ -8,11 +8,10 @@ function lista() {
 
             for (const i in datos) {
                 row += "<tr>";
-                row += "<td> </td>";
                 row += "<td>" + datos[i].Id + "</td>";
                 row += "<td> " + datos[i].Descripcion + "</td>";
                 row +=
-                    '<td> <button class="btn btn-success" onclick="detalle(' + datos[i].Id + ')" data-toggle="modal" data-target="#modalRegistro">Editar</button> </td>';
+                    '<td> <button class="btn btn-success btn-sm" onclick="detalle(' + datos[i].Id + ')" data-toggle="modal" data-target="#modalRegistro">Editar</button> </td>';
             }
 
             $("#tbodyMesas").html(row);

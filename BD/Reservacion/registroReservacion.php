@@ -16,7 +16,7 @@ if($row = $result->fetch_assoc()) {
     $hoy = $row['CURDATE()'];
 }
 
-$hayRes = "SELECT IdMesa, Fecha, Hora FROM reservaciones 
+$hayRes = "SELECT IdMesa, Fecha, Hora FROM Reservaciones 
            WHERE Fecha = '$fecha' AND Hora = '$hora' AND IdMesa = $idMesa";
 $resultado = mysqli_query($Conexion, $hayRes);
 

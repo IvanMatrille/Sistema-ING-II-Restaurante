@@ -2,16 +2,14 @@
 require_once '../Conexion.php';
 
 $nombre = $_POST['Nombre'];
-$referencia = $_POST['Referencia'];
-$cantidadInicial = $_POST['CantidadInicial'];
-$categoria = $_POST['Categoria'];
+$cantidad = $_POST['Cantidad'];
 $ubicacion = $_POST['Ubicacion'];
 $ITBIS = $_POST['ITBIS'];
 $costo = $_POST['Costo'];
 $precio = $_POST['Precio'];
 
-$query = "INSERT INTO Producto(Nombre, Referencia, CantidadInicial, Categoria, Ubicacion, ITBIS, Costo, Precio)
-            VALUES('$nombre', '$referencia', $cantidadInicial, '$categoria', '$ubicacion', $ITBIS, $costo, $precio)";
+$query = "INSERT INTO Plato(Nombre, Cantidad, Ubicacion, ITBIS, Costo, Precio)
+            VALUES('$nombre', $cantidad, '$ubicacion', $ITBIS, $costo, $precio)";
 $insertar = mysqli_query($Conexion, $query);
 
 if ($insertar) {

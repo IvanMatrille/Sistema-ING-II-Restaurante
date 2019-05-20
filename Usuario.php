@@ -14,30 +14,39 @@
 
 <body>
     <?php include 'BarraNavegacion.html';?>
-    <div class="divModulo">
-        <h4>Usuarios</h4>
-    </div>
-    <div class="divModulo row mb-1">
-        <button class="btn btn-primary ml-1" id="btnNuevo" data-toggle="modal"
-            data-target="#modalRegistro">Nuevo</button>
-    </div>
+    <main class="container-fluid">
+        <div class="divModulo">
+            <h4>Usuarios</h4>
+        </div>
+        <div class="divModulo row my-1">
+            <div class="col-md-6 form-group">
+                <input type="text" id="busqueda" class="form-control" placeholder="Buscar" autocomplete="off">
+            </div>
+            <div class="col-auto">
 
-    <table class="table table-sm">
-        <thead>
-            <tr>
-                <th>&nbsp;</th>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Rol</th>
-                <th>Accion</th>
-            </tr>
-        </thead>
-        <tbody id="tbodyUsuarios">
-            <!-- Generado por js -->
-        </tbody>
-    </table>
+                <button class="btn btn-primary" id="btnNuevo" data-toggle="modal"
+                    data-target="#modalRegistro">Nuevo</button>
+            </div>
+        </div>
+
+        <div class="col-md-12 table-responsive">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Rol</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyUsuarios">
+                    <!-- Generado por js -->
+                </tbody>
+            </table>
+        </div>
+    </main>
 
     <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">

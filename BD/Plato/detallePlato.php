@@ -4,8 +4,7 @@ require_once '../Conexion.php';
 $id = $_GET['id'];
 
 $rows = array();
-$queryUsr = "SELECT Id, Nombre, Referencia, CantidadInicial, Categoria, Ubicacion, ITBIS, Costo, Precio
-             FROM Producto WHERE Id = $id";
+$queryUsr = "SELECT Id, Nombre, Cantidad, Ubicacion, ITBIS, Costo, Precio FROM Plato WHERE Id = $id";
 $resultado = mysqli_query($Conexion, $queryUsr);
 
 while ($row = $resultado->fetch_assoc()) {

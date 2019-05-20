@@ -8,7 +8,6 @@ function lista() {
 
             for (const i in datos) {
                 row += "<tr>";
-                row += '<td> </td>';
                 row += "<td> " + datos[i].Id + "</td>";
                 row += "<td> " + datos[i].NombreCliente + "</td>";
                 row += "<td> " + datos[i].DescripcionMesa + "</td>";
@@ -22,10 +21,11 @@ function lista() {
     });
 }
 
-function listaClientes() {
+function listaClientes(busqueda) {
     $.ajax({
         type: "GET",
         url: "BD/Cliente/listaClientes.php",
+        data: "busqueda="+busqueda,
         success: function (response) {
             let datos = JSON.parse(response);
             let row = "";
@@ -36,7 +36,7 @@ function listaClientes() {
                 row += "<td> " + datos[i].Apellido + "</td>";
                 row += "<td> " + datos[i].Cedula + "</td>";
                 row +=
-                    '<td> <button class="btn btn-success" onclick="detalleCliente(' + datos[i].Id + ')" >Aceptar</button> </td>';
+                    '<td> <button class="btn btn-success btn-sm" onclick="detalleCliente(' + datos[i].Id + ')" >Aceptar</button> </td>';
                 row += "</tr>";
             }
 
@@ -73,7 +73,7 @@ function listaMesas() {
                 row += "<tr>";
                 row += "<td> " + datos[i].Descripcion + "</td>";
                 row +=
-                    '<td> <button class="btn btn-success" onclick="detalleMesa(' + datos[i].Id + ')" >Aceptar</button> </td>';
+                    '<td> <button class="btn btn-success btn-sm" onclick="detalleMesa(' + datos[i].Id + ')" >Aceptar</button> </td>';
                 row += "</tr>";
             }
 
@@ -170,7 +170,7 @@ $(() => {
     horas();
 
     $('#btnCliente').click(function (e) {
-        listaClientes();
+        listaClientes('');
     });
     $('#btnMesa').click(function (e) {
         listaMesas();
@@ -190,5 +190,9 @@ $(() => {
     
     $('#btnUsada').click(function (e) { 
         usada();
+    });
+
+    $('#busquedaCliente').on('propertychange input', function () {
+        listaClientes($('#busquedaCliente').val());
     });
 });

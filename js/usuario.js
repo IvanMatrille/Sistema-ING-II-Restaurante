@@ -1,21 +1,21 @@
-function lista() {
+function lista(busqueda) {
     $.ajax({
         type: "GET",
         url: "BD/Usuario/listaUsuarios.php",
+        data: "busqueda="+busqueda,
         success: function (response) {
             let datos = JSON.parse(response);
             let row = "";
 
             for (const i in datos) {
                 row += "<tr>";
-                row += "<td> </td>";
                 row += "<td>" + datos[i].Id + "</td>";
                 row += "<td> " + datos[i].NombreUsuario + "</td>";
                 row += "<td> " + datos[i].Nombre + "</td>";
                 row += "<td> " + datos[i].Apellido + "</td>";
                 row += "<td> " + datos[i].NombreRol + "</td>";
                 row +=
-                    '<td> <button class="btn btn-success" onclick="detalle(' + datos[i].Id + ')" data-toggle="modal" data-target="#modalRegistro">Editar</button> </td>';
+                    '<td> <button class="btn btn-success btn-sm" onclick="detalle(' + datos[i].Id + ')" data-toggle="modal" data-target="#modalRegistro">Editar</button> </td>';
             }
 
             $("#tbodyUsuarios").html(row);
@@ -26,6 +26,7 @@ function roles(id) {
     $.ajax({
         type: "GET",
         url: "BD/RolUsuario/listaRoles.php",
+        data: "busqueda=",
         success: function (response) {
             let datos = JSON.parse(response);
             let option = "";
@@ -56,7 +57,7 @@ function registrar() {
         success: function (response) {
             alert(response);
             $('#modalRegistro').modal('hide');
-            lista();
+            lista($('#busqueda').val());
         }
     });
 }
@@ -78,7 +79,7 @@ function actualizar() {
             if (response == 1) {
                 alert("Usuario actualizado correctamente");
                 $('#modalRegistro').modal('hide');
-                lista();
+                lista($('#busqueda').val());
             } else {
                 alert("Clave incorrecta");
             }
@@ -106,7 +107,7 @@ function detalle(id) {
 }
 
 $(() => {
-    lista();
+    lista('');
 
     $("#btnNuevo").click(function (e) {
         $("#frmRegistro").trigger("reset");
@@ -123,5 +124,9 @@ $(() => {
         } else {
             actualizar();
         }
+    });
+
+    $('#busqueda').on('propertychange input', function () {
+        lista($('#busqueda').val());
     });
 });

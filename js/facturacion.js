@@ -51,10 +51,11 @@ function listaMeseros() {
     });
 }
 
-function listaClientes() {
+function listaClientes(busqueda) {
     $.ajax({
         type: "GET",
         url: "BD/Cliente/listaClientes.php",
+        data: "busqueda="+busqueda,
         success: function(response) {
             let datos = JSON.parse(response);
             let row = "";
@@ -66,7 +67,7 @@ function listaClientes() {
                 row += "<td> " + datos[i].Apellido + "</td>";
                 row += "<td> " + datos[i].Telefono + "</td>";
                 row +=
-                    '<td> <button class="btn btn-success" onclick="detalleCliente(' + datos[i].Id + ')" >Aceptar</button> </td>';
+                    '<td> <button class="btn btn-success btn-sm" onclick="detalleCliente(' + datos[i].Id + ')" >Aceptar</button> </td>';
                 row += "</tr>";
             }
 
@@ -75,10 +76,11 @@ function listaClientes() {
     });
 }
 
-function listaPlatos() {
+function listaPlatos(busqueda) {
     $.ajax({
         type: "GET",
-        url: "BD/Platos/listaPlatos.php",
+        url: "BD/Plato/listaPlatos.php",
+        data: "busqueda="+busqueda,
         success: function(response) {
             let datos = JSON.parse(response);
             let row = "";
@@ -86,11 +88,11 @@ function listaPlatos() {
             for (const i in datos) {
                 row += "<tr>";
                 row += "<td>" + datos[i].Id + "</td>";
-                row += "<td>" + datos[i].Descripcion + "</td>";
+                row += "<td>" + datos[i].Nombre + "</td>";
                 row += '<td> <input type="number" id="cantidad"> </td>';
                 row += "<td>" + datos[i].Precio + "</td>";
                 row +=
-                    '<td> <button class="btn btn-success" onclick="agregarPlato(' + datos[i].Id + ')" >Agregar</button> </td>';
+                    '<td> <button class="btn btn-success btn-sm" onclick="agregarPlato(' + datos[i].Id + ')" >Agregar</button> </td>';
                 row += "</tr>";
             }
             $("#tbodyPlatos").html(row);
@@ -138,10 +140,17 @@ $(() => {
     listaMeseros();
 
     $('#btnCliente').click(function(e) {
-        listaClientes();
+        listaClientes('');
     });
 
     $('#btnPlatos').click(function(e) {
-        listaPlatos();
+        listaPlatos('');
+    });
+
+    $('#busquedaCliente').on('propertychange input', function () {
+        listaClientes($('#busquedaCliente').val());
+    });
+    $('#busquedaPlato').on('propertychange input', function () {
+        listaPlatos($('#busquedaPlato').val());
     });
 })
