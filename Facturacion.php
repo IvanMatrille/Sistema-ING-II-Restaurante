@@ -21,9 +21,6 @@
     </div>
 
     <div class="container">
-        <div class="btn-facturar mb-1">
-            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registrar</button>
-        </div>
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -82,29 +79,30 @@
         <div class="card mt-3 mb-3">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 table-responsive">
                         <div class="float-right mr-2">
                             <table class="thFacturacion">
                                 <tr>
-                                    <th>Propina: </th>
-                                    <td id="tdPropina">RD$ 150</td>
+                                    <th>Propina RD$: </th>
+                                    <td id="tdPropina"> </td>
                                 </tr>
                                 <tr>
-                                    <th>Precio productos: </th>
-                                    <td id="tdPrecioProductos">RD$ 2000</td>
+                                    <th>Precio productos RD$: </th>
+                                    <td id="tdPrecioProductos"></td>
 
-                                    <th>Total: </th>
-                                    <td id="tdPrecioTotal">RD$ 2150</td>
+                                    <th>Total RD$: </th>
+                                    <td id="tdPrecioTotal"> </td>
                                 </tr>
                             </table>
                         </div>
                         <button class="btn btn-outline-success" id="btnPlatos" data-toggle="modal" data-target="#modalPlatos">Agregar platos</button>
-                        <table class="table table-sm mt-1">
+                        <table class="table table-sm mt-1" id="tablaVenta">
                             <thead>
                                 <th>Codigo</th>
                                 <th>Descripcion</th>
                                 <th>Cantidad</th>
                                 <th>Precio RD$</th>
+                                <th>Total RD$</th>
                                 <th>Accion</th>
                             </thead>
                             <tbody id="tbodyVenta">
@@ -114,6 +112,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="btn-facturar mb-1">
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registrar</button>
         </div>
     </div>
 
@@ -127,7 +128,7 @@
                         </button>
                 </div>
                 <div class="modal-body table-responsive">
-                <input type="text" id="busquedaCliente" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
+                    <input type="text" id="busquedaCliente" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
                     <table class="table table-sm">
                         <thead>
                             <th>ID</th>
@@ -154,12 +155,18 @@
                             </button>
                 </div>
                 <div class="modal-body table-responsive">
-                <input type="text" id="busquedaPlato" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-8">
+                        <input type="text" id="busquedaPlato" class="form-control mb-1" placeholder="Buscar" autocomplete="off">
+                            </div>
+                        <div class="col-md-4">
+                            <input type="number" id="cantidad" class="form-control mb-1" placeholder="Cantidad" autocomplete="off">
+                        </div>
+                    </div>
                     <table class="table table-sm">
                         <thead>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Cantidad</th>
                             <th>Precio</th>
                             <th>Accion</th>
                         </thead>

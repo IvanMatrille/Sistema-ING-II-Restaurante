@@ -102,7 +102,6 @@
 
     <div class="registrar mt-3 mb-3">
         <button id="btnRegistrar" class="btn btn-primary">Registrar</button>
-        <button id="btnUsada" class="btn btn-success">Reservacion en uso</button>
     </div>
 
     <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-hidden="true">
