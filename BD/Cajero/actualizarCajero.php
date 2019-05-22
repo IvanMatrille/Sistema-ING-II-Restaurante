@@ -5,7 +5,7 @@ $id = $_POST['Id'];
 $nombre = $_POST['Nombre'];
 $apellido = $_POST['Apellido'];
 
-$query = "UPDATE Mesero SET Nombre='$nombre', Apellido='$apellido' WHERE Id=$id";
+$query = "UPDATE Cajero SET Nombre='$nombre', Apellido='$apellido' WHERE Id=$id";
 $insertar = mysqli_query($Conexion, $query);
 
 if ($insertar) {

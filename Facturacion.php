@@ -119,10 +119,6 @@
                 </div>
             </div>
         </div>
-        <div class="btn-facturar mb-1">
-            <button type="submit" id="btnRegistrar" class="btn btn-success"><i class="fas fa-save"></i>
-                Registrar</button>
-        </div>
     </div>
 
     <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-hidden="true">
