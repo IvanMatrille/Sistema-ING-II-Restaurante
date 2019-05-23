@@ -1,15 +1,33 @@
-function listaCajeros(busqueda) {
+function detalle(id) {
+    $.ajax({
+        type: "GET",
+        url: "BD/Facturacion/detalleFactura.php",
+        data: "Id=" + id,
+        success: function(response) {
+            let datos = JSON.parse(response);
+
+            listaCajeros('', datos[0].IdCajero);
+            listaMesas(datos[0].IdMesa);
+            listaMeseros('', datos[0].IdMesero);
+            detalleCliente(datos[0].IdCliente);
+        }
+    });
+}
+
+function listaCajeros(busqueda, id) {
     $.ajax({
         type: "GET",
         url: "BD/Cajero/listaCajeros.php",
         data: "busqueda=" + busqueda,
-        success: function (response) {
+        success: function(response) {
             let datos = JSON.parse(response);
             let option = '';
+            let selected = (id == 0 || id == '') ? 'selected' : '';
 
-            option += '<option disabled selected>-Seleccionar-</option>';
+            option += '<option disabled ' + selected + '>-Seleccionar-</option>';
             for (const i in datos) {
-                option += '<option value="' + datos[i].Id + '">' + datos[i].Nombre + ' ' + datos[i].Apellido + '</option>';
+                selected = (datos[i].Id == id) ? 'selected' : '';
+                option += '<option ' + selected + ' value="' + datos[i].Id + '">' + datos[i].Nombre + ' ' + datos[i].Apellido + '</option>';
             }
 
             $('#cajero').html(option);
@@ -17,17 +35,19 @@ function listaCajeros(busqueda) {
     });
 }
 
-function listaMesas() {
+function listaMesas(id) {
     $.ajax({
         type: "GET",
         url: "BD/Mesa/listaMesas.php",
-        success: function (response) {
+        success: function(response) {
             let datos = JSON.parse(response);
             let option = '';
+            let selected = (id == 0 || id == '') ? 'selected' : '';
 
-            option += '<option disabled selected>-Seleccionar-</option>';
+            option += '<option disabled ' + selected + '>-Seleccionar-</option>';
             for (const i in datos) {
-                option += '<option value="' + datos[i].Id + '">' + datos[i].Descripcion + '</option>';
+                selected = (datos[i].Id == id) ? 'selected' : '';
+                option += '<option ' + selected + ' value="' + datos[i].Id + '">' + datos[i].Descripcion + '</option>';
             }
 
             $('#mesa').html(option);
@@ -35,17 +55,20 @@ function listaMesas() {
     });
 }
 
-function listaMeseros(busqueda) {
+function listaMeseros(busqueda, id) {
     $.ajax({
         type: "GET",
         url: "BD/Mesero/listaMeseros.php",
         data: "busqueda=" + busqueda,
-        success: function (response) {
+        success: function(response) {
             let datos = JSON.parse(response);
             let option = '';
-            option += '<option disabled selected>-Seleccionar-</option>';
+            let selected = (id == 0 || id == '') ? 'selected' : '';
+
+            option += '<option disabled ' + selected + '>-Seleccionar-</option>';
             for (const i in datos) {
-                option += '<option value="' + datos[i].Id + '">' + datos[i].Nombre + ' ' + datos[i].Apellido + '</option>';
+                selected = (datos[i].Id == id) ? 'selected' : '';
+                option += '<option ' + selected + ' value="' + datos[i].Id + '">' + datos[i].Nombre + ' ' + datos[i].Apellido + '</option>';
             }
 
             $('#mesero').html(option);
@@ -58,7 +81,7 @@ function listaClientes(busqueda) {
         type: "GET",
         url: "BD/Cliente/listaClientes.php",
         data: "busqueda=" + busqueda,
-        success: function (response) {
+        success: function(response) {
             let datos = JSON.parse(response);
             let row = "";
 
@@ -83,7 +106,7 @@ function listaPlatos(busqueda) {
         type: "GET",
         url: "BD/Plato/listaPlatos.php",
         data: "busqueda=" + busqueda,
-        success: function (response) {
+        success: function(response) {
             let datos = JSON.parse(response);
             let row = "";
 
@@ -106,7 +129,7 @@ function detalleCliente(id) {
         type: "GET",
         url: "BD/Cliente/detalleCliente.php",
         data: "id=" + id,
-        success: function (response) {
+        success: function(response) {
             let datos = JSON.parse(response);
             $('#idCliente').html(datos[0].Id);
             $("#tdNombre").html(datos[0].Nombre);
@@ -116,12 +139,13 @@ function detalleCliente(id) {
         }
     });
 }
+
 function platosDeVenta(id) {
     $.ajax({
         type: "GET",
         url: "BD/Facturacion/platosDeVenta.php",
-        data: "id="+id,
-        success: function (response) {
+        data: "id=" + id,
+        success: function(response) {
             let datos = JSON.parse(response);
             let row = "";
 
@@ -143,12 +167,14 @@ function platosDeVenta(id) {
     $.ajax({
         type: "GET",
         url: "BD/Facturacion/precioTotal.php",
-        success: function (response) {
+        data: "id=" + id,
+        success: function(response) {
             let datos = JSON.parse(response);
             $('#tdPrecioTotal').html(datos);
         }
     });
 }
+
 function agregarPlato(idPlato, precio) {
     let repetido = false;
     var tablaVenta = document.getElementById('tablaVenta');
@@ -174,7 +200,7 @@ function agregarPlato(idPlato, precio) {
                 type: "POST",
                 url: "BD/Facturacion/agregarPlato.php",
                 data: datos,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     platosDeVenta($('#txtId').val());
                 }
@@ -188,11 +214,15 @@ function agregarPlato(idPlato, precio) {
 }
 
 function borrarPlato(idPlato) {
+    let datos = {
+        "Id": $('#txtId').val(),
+        "IdPlato": idPlato
+    }
     $.ajax({
         type: "POST",
         url: "BD/Facturacion/borrarPlato.php",
-        data: "IdPlato=" + idPlato,
-        success: function (response) {
+        data: datos,
+        success: function(response) {
             console.log('Borrado correcto');
             platosDeVenta($('#txtId').val());
         }
@@ -207,7 +237,7 @@ function nuevafactura() {
     $.ajax({
         type: "POST",
         url: "BD/Facturacion/nuevaFactura.php",
-        success: function (response) {
+        success: function(response) {
             if (response == 1) {
                 alert('Facturado correctamente');
                 $('#idCliente').html('');
@@ -219,28 +249,31 @@ function nuevafactura() {
         }
     });
 }
+
 function crearFactura() {
     $.ajax({
         type: "POST",
         url: "BD/Facturacion/crearFactura.php",
-        success: function (response) {
+        success: function(response) {
             console.log('Factura creada con exito');
         }
     });
 }
+
 function guardar() {
-        $.ajax({
-            type: "POST",
-            url: "BD/Facturacion/facturar.php",
-            data: new FormData(document.getElementById('frmFactura')),
-            processData: false,
-            cache: false,
-            contentType: false,
-            success: function (response) {
-                console.log(response);
-            }
-        });
+    $.ajax({
+        type: "POST",
+        url: "BD/Facturacion/facturar.php",
+        data: new FormData(document.getElementById('frmFactura')),
+        processData: false,
+        cache: false,
+        contentType: false,
+        success: function(response) {
+            console.log(response);
+        }
+    });
 }
+
 function guardarCliente(idCliente) {
     let datos = {
         "id": $('#txtId').val(),
@@ -250,7 +283,7 @@ function guardarCliente(idCliente) {
         type: "POST",
         url: "BD/Facturacion/agregarCliente.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             console.log(response);
             detalleCliente(idCliente);
         }
@@ -258,41 +291,28 @@ function guardarCliente(idCliente) {
 }
 
 $(() => {
+    detalle($('#txtId').val());
     listaCajeros('');
     listaMesas();
     listaMeseros('');
     platosDeVenta($('#txtId').val());
 
-    $('#btnCliente').click(function (e) {
+    $('#btnCliente').click(function(e) {
         listaClientes('');
     });
 
-    $('#btnPlatos').click(function (e) {
+    $('#btnPlatos').click(function(e) {
         listaPlatos('');
     });
 
-    $('#busquedaCliente').on('propertychange input', function () {
+    $('#busquedaCliente').on('propertychange input', function() {
         listaClientes($('#busquedaCliente').val());
     });
-    $('#busquedaPlato').on('propertychange input', function () {
+    $('#busquedaPlato').on('propertychange input', function() {
         listaPlatos($('#busquedaPlato').val());
     });
 
-    $('#btnRegistrar').click(function (e) {
-        var tablaVenta = document.getElementById('tablaVenta');
-        let cajero = $('#cajero').val();
-        let cliente = $('#idCliente').html();
-        let mesa = $('#mesa').val();
-        let mesero = $('#mesero').val();
-
-        if (cajero != '' && cliente != '' && mesa != '' && mesero != '' && tablaVenta.rows.length > 1) {
-            nuevafactura();
-        } else {
-            alert("Favor definir el cajero, cliente, mesa, mesero y platos para la factura");
-        }
-    });
-
-    $('.f-data').change(function (e) { 
+    $('.f-data').change(function(e) {
         e.preventDefault();
         guardar();
     });

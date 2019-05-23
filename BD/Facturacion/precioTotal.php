@@ -1,8 +1,10 @@
 <?php
 require_once '../Conexion.php';
 
+$id = $_GET['id'];
+
 $precioTotal = '';
-$queryUsr = "SELECT SUM(PrecioPlatos) 'PrecioTotal' FROM DetalleFactura";
+$queryUsr = "SELECT SUM(PrecioPlatos) 'PrecioTotal' FROM DetalleFactura WHERE IdFactura = $id";
 
 $resultado = mysqli_query($Conexion, $queryUsr);
 

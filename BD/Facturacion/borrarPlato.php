@@ -1,15 +1,8 @@
 <?php
 require_once '../Conexion.php';
 
+$id = $_POST['Id'];
 $idPlato = $_POST['IdPlato'];
-
-$idMax = "SELECT MAX(Id) FROM Factura";
-$resultMax = mysqli_query($Conexion, $idMax);
-$id = '';
-
-if ($row = $resultMax->fetch_assoc()) {
-    $id = $row['MAX(Id)'];
-}
 
 $query = "DELETE FROM DetalleFactura WHERE IdPlatos = $idPlato AND IdFactura = $id";
 $delete = mysqli_query($Conexion, $query);
